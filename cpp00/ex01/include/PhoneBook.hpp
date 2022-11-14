@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   phonebook.hpp                                      :+:      :+:    :+:   */
+/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 15:05:38 by soo               #+#    #+#             */
-/*   Updated: 2022/11/13 21:01:25 by soo              ###   ########.fr       */
+/*   Updated: 2022/11/14 12:58:30 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ class PhoneBook
 		int	currentCnt;
 
 	public :
+		PhoneBook();
 		void	setCurrentIdx();
 		int		getCurrentIdx();
 		void	setCurrentCnt();

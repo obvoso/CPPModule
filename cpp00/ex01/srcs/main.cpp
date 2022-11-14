@@ -6,15 +6,15 @@
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 15:26:54 by soo               #+#    #+#             */
-/*   Updated: 2022/11/13 21:12:16 by soo              ###   ########.fr       */
+/*   Updated: 2022/11/14 14:02:10 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "PhoneBook.hpp"
+#include "../include/PhoneBook.hpp"
 
 static bool	checkInput()
 {
-	if (std::cin.fail() || std::cin.get() == EOF || std::cin.eof())
+	if (std::cin.fail() || std::cin.eof())
 	{
 		std::cin.clear();
 		clearerr(stdin);
@@ -24,29 +24,27 @@ static bool	checkInput()
 	return (false);
 }
 
-int main(int argc, char **argv)
+int main()
 {
 	PhoneBook	phonebook;
 	std::string	command;
-	static_cast<void>(argv);
 
-	if (argc != 1)
-	{
-		std::cerr << "Argument Error\n";
-		return (0);
-	}
 	while (true)
 	{
 		std::cout << "Enter a command(ADD or SEARCH or EXIT)" << std::endl;
-		std::cin>>command;
+		std::getline(std::cin, command);
 		if (checkInput())
-			;
-		else if (command == "ADD")
+			continue;
+		std::cin.clear();
+		clearerr(stdin);
+		if (command == "ADD")
 			phonebook.addNewContact();
 		else if (command == "SEARCH")
 			phonebook.searchContact();
 		else if (command == "EXIT")
 			exit(0);
+		else
+		 	std::cerr << "Invalid Input\n";
 	}
 	return (0);
 }

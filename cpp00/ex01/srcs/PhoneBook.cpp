@@ -1,16 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   phonebook.cpp                                      :+:      :+:    :+:   */
+/*   PhoneBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 14:44:38 by soo               #+#    #+#             */
-/*   Updated: 2022/11/13 20:47:33 by soo              ###   ########.fr       */
+/*   Updated: 2022/11/14 14:04:00 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "PhoneBook.hpp"
+#include "../include/PhoneBook.hpp"
+#include <cstdlib>
+
+PhoneBook::PhoneBook()
+{
+	this->currentIdx = 0;
+	this->currentCnt = 0;
+}
 
 void	PhoneBook::setCurrentIdx()
 {
@@ -59,6 +66,7 @@ void	PhoneBook::addNewContact()
 
 void	PhoneBook::searchContact()
 {
+	std::string	tmpIdx;
 	int	searchIdx;
 
 	if (contactIsEmpty())
@@ -74,10 +82,14 @@ void	PhoneBook::searchContact()
 		while (true)
 		{
 			std::cout << "Enter the index you want"<<std::endl;
-			std::cin >> searchIdx;
+			std::getline(std::cin, tmpIdx);
 			if(this->contacts[0].checkInput())
 				continue ;
-			else if (searchIdx > 0 && searchIdx < 9 && searchIdx <= getCurrentCnt())
+			//std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			std::cin.clear();
+			clearerr(stdin);
+			searchIdx = std::atoi(tmpIdx.c_str());
+			if (searchIdx > 0 && searchIdx < 9 && searchIdx <= getCurrentCnt())
 			{
 				this->contacts[searchIdx - 1].showDetailContact();
 				break ;

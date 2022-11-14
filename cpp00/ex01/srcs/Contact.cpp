@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   contact.cpp                                        :+:      :+:    :+:   */
+/*   Contact.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 15:51:43 by soo               #+#    #+#             */
-/*   Updated: 2022/11/13 21:22:24 by soo              ###   ########.fr       */
+/*   Updated: 2022/11/14 14:16:31 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Contact.hpp"
+#include "../include/Contact.hpp"
 
 std::string		Contact::getContactFirstName()
 {
@@ -55,60 +55,44 @@ void			Contact::setContactDarkestSecret(std::string s)
 
 bool	Contact::checkInput()
 {
-	if (std::cin.fail() || std::cin.get() == EOF || std::cin.eof())
+	if (std::cin.fail() || std::cin.eof())
 	{
 		std::cin.clear();
 		clearerr(stdin);
+		//std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		std::cerr << "Invalid Input\n";
 		return (true);
 	}
 	return (false);
 }
 
-void	Contact::addContact()
+std::string	Contact::inputInfo(std::string str)
 {
 	std::string tmp;
 	
 	while (true)
 	{
-		std::cout << "Enter a first name" << std::endl;
-		std::cin >> tmp;
+		std::cout << str << std::endl;
+		std::getline(std::cin, tmp);
+		std::cin.clear();
+		clearerr(stdin);
+		if (tmp.empty() || tmp.size() < 1) // 이새끼 왜 안걸리냐
+			continue;
 		if (!checkInput())
 			break ;
 	}
-	setContactFirstName(tmp);
-	while (true)
-	{
-		std::cout << "Enter a last name" << std::endl;
-		std::cin >> tmp;
-		if (!checkInput())
-			break ;
-	}
-	setContactLastName(tmp);
-	while (true)
-	{
-		std::cout << "Enter a nickname" << std::endl;
-		std::cin >> tmp;
-		if (!checkInput())
-			break ;
-	}
-	setContactNickName(tmp);
-	while (true)
-	{
-		std::cout << "Enter a phone number" << std::endl;
-		std::cin >> tmp;
-		if (!checkInput() && std::atoi(tmp.c_str()))
-			break ;
-	}
-	setContactPhoneNumber(tmp);
-	while (true)
-	{
-		std::cout << "Enter a darkest secret" << std::endl;
-		std::cin >> tmp;
-		if (!checkInput())
-			break ;
-	}
-	setContactDarkestSecret(tmp);
+	return (tmp);
+}
+
+void	Contact::addContact()
+{
+	std::string tmp;
+	
+	setContactFirstName(inputInfo("Enter a first name"));
+	setContactLastName(inputInfo("Enter a last name"));
+	setContactNickName(inputInfo("Enter a nickname"));
+	setContactFirstName(inputInfo("Enter a phone number"));
+	setContactFirstName(inputInfo("Enter a darkest secret"));
 }
 
 std::string Contact::getShortStr(std::string str)
