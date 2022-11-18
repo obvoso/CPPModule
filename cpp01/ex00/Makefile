@@ -5,16 +5,16 @@
 #                                                     +:+ +:+         +:+      #
 #    By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/11/12 14:34:00 by soo               #+#    #+#              #
-#    Updated: 2022/11/16 14:11:49 by soo              ###   ########.fr        #
+#    Created: 2022/11/18 13:14:40 by soo               #+#    #+#              #
+#    Updated: 2022/11/18 13:15:49 by soo              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
-NAME = megaphone
+NAME = Zombie
 
-SRCS =	megaphone.cpp
+SRCS =	newZombie.cpp randomChump.cpp Zombie.cpp main.cpp
 
 OBJS = ${SRCS:.cpp=.o}
 
@@ -24,12 +24,11 @@ $(NAME) : $(OBJS)
 	$(CXX) $(CXXFLAGS) -o $@ $^
 	
 clean :
-	$(RM) $(OBJS)
+	rm -f $(OBJS)
 
 fclean : clean
-	$(RM) $(NAME)
+	rm -f $(NAME)
 
-re : fclean 
-	all
+re : fclean all
 
 .PHONY : all clean fclean re 

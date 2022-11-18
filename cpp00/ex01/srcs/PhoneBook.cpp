@@ -6,12 +6,11 @@
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 14:44:38 by soo               #+#    #+#             */
-/*   Updated: 2022/11/14 14:04:00 by soo              ###   ########.fr       */
+/*   Updated: 2022/11/18 11:06:18 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/PhoneBook.hpp"
-#include <cstdlib>
 
 PhoneBook::PhoneBook()
 {
@@ -73,19 +72,22 @@ void	PhoneBook::searchContact()
 		std::cout << "Empty Phonebook" << std::endl;
 	else
 	{
-		std::cout << "\n     index|" << "first name|" << " last name|" << "  nickname|" << std::endl;
+		std::cout << std::endl;
+		std::cout << std::setw(11) << std::setfill(' ') << "index|";
+		std::cout << std::setw(11) << std::setfill(' ') << "first name|";
+		std::cout << std::setw(11) << std::setfill(' ') << "last name|";
+		std::cout << std::setw(11) << std::setfill(' ') << "nickname|" << std::endl;
 		for(int i  = 0; i < currentCnt; i++)
 		{
-			std::cout << "         " << i + 1 << "|";
+			std::cout << std::setw(10) << std::setfill(' ') << i + 1 << "|";
 			this->contacts[i].showContact();
 		}
 		while (true)
 		{
-			std::cout << "Enter the index you want"<<std::endl;
+			std::cout << "Enter the index you want" << std::endl;
 			std::getline(std::cin, tmpIdx);
 			if(this->contacts[0].checkInput())
 				continue ;
-			//std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 			std::cin.clear();
 			clearerr(stdin);
 			searchIdx = std::atoi(tmpIdx.c_str());

@@ -6,14 +6,14 @@
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 15:05:38 by soo               #+#    #+#             */
-/*   Updated: 2022/11/14 12:58:30 by soo              ###   ########.fr       */
+/*   Updated: 2022/11/18 11:04:19 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHONEBOOK_HPP
 # define PHONEBOOK_HPP
 
-#include "Contact.hpp"
+#include "../include/Contact.hpp"
 
 class PhoneBook
 {

@@ -6,7 +6,7 @@
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 15:51:43 by soo               #+#    #+#             */
-/*   Updated: 2022/11/14 14:16:31 by soo              ###   ########.fr       */
+/*   Updated: 2022/11/18 11:10:08 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ bool	Contact::checkInput()
 	{
 		std::cin.clear();
 		clearerr(stdin);
-		//std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		std::cerr << "Invalid Input\n";
 		return (true);
 	}
@@ -74,12 +73,14 @@ std::string	Contact::inputInfo(std::string str)
 	{
 		std::cout << str << std::endl;
 		std::getline(std::cin, tmp);
-		std::cin.clear();
-		clearerr(stdin);
-		if (tmp.empty() || tmp.size() < 1) // 이새끼 왜 안걸리냐
+		if (tmp.empty() || tmp.size() < 1)
 			continue;
 		if (!checkInput())
+		{
+			std::cin.clear();
+			clearerr(stdin);
 			break ;
+		}
 	}
 	return (tmp);
 }
@@ -91,8 +92,8 @@ void	Contact::addContact()
 	setContactFirstName(inputInfo("Enter a first name"));
 	setContactLastName(inputInfo("Enter a last name"));
 	setContactNickName(inputInfo("Enter a nickname"));
-	setContactFirstName(inputInfo("Enter a phone number"));
-	setContactFirstName(inputInfo("Enter a darkest secret"));
+	setContactPhoneNumber(inputInfo("Enter a phone number"));
+	setContactDarkestSecret(inputInfo("Enter a darkest secret"));
 }
 
 std::string Contact::getShortStr(std::string str)

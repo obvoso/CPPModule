@@ -6,7 +6,7 @@
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 15:26:54 by soo               #+#    #+#             */
-/*   Updated: 2022/11/14 14:02:10 by soo              ###   ########.fr       */
+/*   Updated: 2022/11/16 14:11:14 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int main()
 		else if (command == "SEARCH")
 			phonebook.searchContact();
 		else if (command == "EXIT")
-			exit(0);
+			return (0);
 		else
 		 	std::cerr << "Invalid Input\n";
 	}

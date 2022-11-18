@@ -6,12 +6,11 @@
 #    By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/12 14:34:00 by soo               #+#    #+#              #
-#    Updated: 2022/11/14 12:57:18 by soo              ###   ########.fr        #
+#    Updated: 2022/11/16 14:12:35 by soo              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC = c++
-CFLAGS = -Wall -Wextra -Werror -std=c++98
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 NAME = phonebook
 
@@ -22,17 +21,15 @@ OBJS = ${SRCS:.cpp=.o}
 all : $(NAME)
 
 $(NAME) : $(OBJS) 
-	$(CC) $(CFLAGS) -o $@ $^
-	
-%.o : %.cpp
-	$(CC) $(CFLAGS) -o $@ -c $^ -Iinclude
+	$(CXX) $(CXXFLAGS) -o $@ $^
 	
 clean :
-	rm -f $(OBJS)
+	$(RM) $(OBJS)
 
 fclean : clean
-	rm -f $(NAME)
+	$(RM) $(NAME)
 
-re : fclean all
+re : fclean 
+	all
 
 .PHONY : all clean fclean re 
