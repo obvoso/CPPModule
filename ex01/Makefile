@@ -5,16 +5,16 @@
 #                                                     +:+ +:+         +:+      #
 #    By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/11/18 13:14:40 by soo               #+#    #+#              #
-#    Updated: 2022/11/18 13:15:49 by soo              ###   ########.fr        #
+#    Created: 2022/11/12 14:34:00 by soo               #+#    #+#              #
+#    Updated: 2022/11/18 16:52:45 by soo              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
-NAME = Zombie
+NAME = phonebook
 
-SRCS =	newZombie.cpp randomChump.cpp Zombie.cpp main.cpp
+SRCS =	srcs/main.cpp srcs/Contact.cpp srcs/PhoneBook.cpp
 
 OBJS = ${SRCS:.cpp=.o}
 
@@ -22,13 +22,17 @@ all : $(NAME)
 
 $(NAME) : $(OBJS) 
 	$(CXX) $(CXXFLAGS) -o $@ $^
+
+%.o : %.cpp
+	$(CXX) $(CXXFLAGS) -o $@ -c $^ -Iinclude
 	
 clean :
-	rm -f $(OBJS)
+	$(RM) $(OBJS)
 
 fclean : clean
-	rm -f $(NAME)
+	$(RM) $(NAME)
 
-re : fclean all
+re : fclean 
+	$(MAKE) all
 
 .PHONY : all clean fclean re 

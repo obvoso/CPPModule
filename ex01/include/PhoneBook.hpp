@@ -1,26 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/18 11:14:00 by soo               #+#    #+#             */
-/*   Updated: 2022/11/18 13:17:12 by soo              ###   ########.fr       */
+/*   Created: 2022/11/12 15:05:38 by soo               #+#    #+#             */
+/*   Updated: 2022/11/18 16:53:56 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#ifndef PHONEBOOK_HPP
+# define PHONEBOOK_HPP
 
-int main(void)
+#include "Contact.hpp"
+
+class PhoneBook
 {
-	Zombie stackZombie = Zombie("Stack");
-	Zombie *heapZombie = new Zombie("Heap");
+	private :
+		Contact contacts[8];
+		int currentIdx;
+		int	currentCnt;
 
-	stackZombie.announce();
-	heapZombie->announce();
+	public :
+		PhoneBook();
+		void	setCurrentIdx();
+		int		getCurrentIdx();
+		void	setCurrentCnt();
+		int		getCurrentCnt();
 
-	randomChump("chumpZombie");
-	delete heapZombie;
-	return (0);
-}
+		bool	contactIsEmpty();
+		bool	contactIsFull();
+
+		void	addNewContact();
+		void	searchContact();
+};
+
+#endif

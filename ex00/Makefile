@@ -6,7 +6,7 @@
 #    By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/12 14:34:00 by soo               #+#    #+#              #
-#    Updated: 2022/11/16 14:11:49 by soo              ###   ########.fr        #
+#    Updated: 2022/11/18 16:46:24 by soo              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,6 @@ fclean : clean
 	$(RM) $(NAME)
 
 re : fclean 
-	all
+	$(MAKE) all
 
 .PHONY : all clean fclean re 

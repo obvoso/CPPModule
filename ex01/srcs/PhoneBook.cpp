@@ -6,11 +6,11 @@
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 14:44:38 by soo               #+#    #+#             */
-/*   Updated: 2022/11/18 11:06:18 by soo              ###   ########.fr       */
+/*   Updated: 2022/11/18 16:49:45 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/PhoneBook.hpp"
+#include "PhoneBook.hpp"
 
 PhoneBook::PhoneBook()
 {

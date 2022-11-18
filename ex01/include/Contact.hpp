@@ -6,7 +6,7 @@
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 16:30:45 by soo               #+#    #+#             */
-/*   Updated: 2022/11/14 13:32:51 by soo              ###   ########.fr       */
+/*   Updated: 2022/11/18 16:54:34 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 
 # include <string>
 # include <iostream>
-# include <cstdio>
-# include <limits>
 # include <iomanip>
 
 class Contact

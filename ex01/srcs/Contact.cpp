@@ -6,11 +6,11 @@
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 15:51:43 by soo               #+#    #+#             */
-/*   Updated: 2022/11/18 11:10:08 by soo              ###   ########.fr       */
+/*   Updated: 2022/11/18 16:49:51 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/Contact.hpp"
+#include "Contact.hpp"
 
 std::string		Contact::getContactFirstName()
 {
@@ -74,8 +74,12 @@ std::string	Contact::inputInfo(std::string str)
 		std::cout << str << std::endl;
 		std::getline(std::cin, tmp);
 		if (tmp.empty() || tmp.size() < 1)
-			continue;
-		if (!checkInput())
+		{
+			std::cin.clear();
+			clearerr(stdin);
+			std::cerr << "Invalid Input\n";
+		}
+		else if (!checkInput())
 		{
 			std::cin.clear();
 			clearerr(stdin);
@@ -86,9 +90,7 @@ std::string	Contact::inputInfo(std::string str)
 }
 
 void	Contact::addContact()
-{
-	std::string tmp;
-	
+{	
 	setContactFirstName(inputInfo("Enter a first name"));
 	setContactLastName(inputInfo("Enter a last name"));
 	setContactNickName(inputInfo("Enter a nickname"));
