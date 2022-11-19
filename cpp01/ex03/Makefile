@@ -6,15 +6,15 @@
 #    By: soo <soo@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/18 13:14:40 by soo               #+#    #+#              #
-#    Updated: 2022/11/19 16:34:14 by soo              ###   ########.fr        #
+#    Updated: 2022/11/19 22:07:52 by soo              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
-NAME = zombie
+NAME = Human
 
-SRCS =	newZombie.cpp randomChump.cpp Zombie.cpp main.cpp
+SRCS =	main.cpp Weapon.cpp HumanA.cpp HumanB.cpp
 
 OBJS = ${SRCS:.cpp=.o}
 

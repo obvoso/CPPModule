@@ -1,35 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.cpp                                         :+:      :+:    :+:   */
+/*   HumanB.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: soo <soo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/18 12:04:45 by soo               #+#    #+#             */
-/*   Updated: 2022/11/19 16:32:13 by soo              ###   ########.fr       */
+/*   Created: 2022/11/19 20:47:00 by soo               #+#    #+#             */
+/*   Updated: 2022/11/19 22:49:51 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+# ifndef HUMANB_HPP
+#define HUMANB_HPP
 
-Zombie::Zombie(std::string name)
-{
-	this->name = name;
-}
-Zombie::~Zombie(void)
-{
-	std::cout << getName() << ": Twice dead..." << std::endl;
-}
-std::string	Zombie::getName()
-{
-	return (name);
-}
-void	Zombie::setName(std::string name)
-{
-	this->name = name;
-}
+# include "Weapon.hpp"
 
-void Zombie::announce(void)
+class HumanB
 {
-	std::cout << getName() << ": BraiiiiiiinnnzzzZ..." << std::endl;
-}
+    private :
+        std::string name;
+        Weapon *weapon;
+    
+    public :
+        HumanB(std::string name);
+        ~HumanB(void);
+        void    setName(std::string name);
+        std::string getName(void);
+        
+        void    attack(void);
+        void    setWeapon(Weapon &weapon);
+};
+
+#endif
