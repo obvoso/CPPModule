@@ -6,7 +6,7 @@
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 15:51:43 by soo               #+#    #+#             */
-/*   Updated: 2022/11/18 16:49:51 by soo              ###   ########.fr       */
+/*   Updated: 2022/11/19 15:56:22 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,8 @@ bool	Contact::checkInput()
 	{
 		std::cin.clear();
 		clearerr(stdin);
-		std::cerr << "Invalid Input\n";
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		std::cerr << "Invalid Input";
 		return (true);
 	}
 	return (false);

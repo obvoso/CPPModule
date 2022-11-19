@@ -6,7 +6,7 @@
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 14:44:38 by soo               #+#    #+#             */
-/*   Updated: 2022/11/18 16:49:45 by soo              ###   ########.fr       */
+/*   Updated: 2022/11/19 15:57:11 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ void	PhoneBook::addNewContact()
 
 void	PhoneBook::searchContact()
 {
-	std::string	tmpIdx;
 	int	searchIdx;
 
 	if (contactIsEmpty())
@@ -85,19 +84,19 @@ void	PhoneBook::searchContact()
 		while (true)
 		{
 			std::cout << "Enter the index you want" << std::endl;
-			std::getline(std::cin, tmpIdx);
+			std::cin >> searchIdx;
 			if(this->contacts[0].checkInput())
 				continue ;
 			std::cin.clear();
 			clearerr(stdin);
-			searchIdx = std::atoi(tmpIdx.c_str());
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 			if (searchIdx > 0 && searchIdx < 9 && searchIdx <= getCurrentCnt())
 			{
 				this->contacts[searchIdx - 1].showDetailContact();
 				break ;
 			}
 			else
-				std::cout << "Invalid Index" << std::endl;
+				std::cout << "Invalid Index";
 		}
 	}
 }
