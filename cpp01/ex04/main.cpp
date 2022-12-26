@@ -5,31 +5,32 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: soo <soo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/19 17:48:56 by soo               #+#    #+#             */
-/*   Updated: 2022/12/26 18:52:08 by soo              ###   ########.fr       */
+/*   Created: 2022/12/26 18:57:37 by soo               #+#    #+#             */
+/*   Updated: 2022/12/26 21:33:39 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Weapon.hpp"
-#include "HumanA.hpp"
-#include "HumanB.hpp"
+#include "Replace.hpp"
 
-int main()
+int main(int argc, char **argv)
 {
-    {
-        Weapon club = Weapon("crude spiked club");
-        HumanA bob("Bob", club);
-        bob.attack();
-        club.setType("some other type of club");
-        bob.attack();
-    }
-    {
-        Weapon club = Weapon("crude spiked club");
-        HumanB jim("Jimakem");
-        jim.setWeapon(club);
-        jim.attack();
-        club.setType("some other type of club");
-        jim.attack();
-    }
-    return 0;
+	Replace replace;
+
+	if (argc != 4)
+	{
+		std::cout << "Argument Error" << std::endl;
+		return (0);
+	}
+	if ((std::strlen(argv[1]) == 0) || (std::strlen(argv[1]) == 0) 
+		|| (std::strlen(argv[1]) == 0))
+	{
+		std::cout << "Argument Length Error" << std::endl;
+		return (0);
+	}
+	replace.inFileOpen((std::string)argv[1]);
+	replace.setS1((std::string)argv[2]);
+	replace.setS2((std::string)argv[3]);
+	replace.outFileOpen();
+	replace.replaceContents();
+	return (0);
 }

@@ -1,32 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   HumanA.hpp                                         :+:      :+:    :+:   */
+/*   main.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: soo <soo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/19 17:52:54 by soo               #+#    #+#             */
-/*   Updated: 2022/12/26 19:17:30 by soo              ###   ########.fr       */
+/*   Created: 2022/12/26 19:32:39 by soo               #+#    #+#             */
+/*   Updated: 2022/12/26 19:36:30 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# ifndef HUMANA_HPP
-#define HUMANA_HPP
+#ifndef MAIN_HPP
+# define MAIN_HPP
 
-# include "Weapon.hpp"
-
-class HumanA
-{
-    private :
-        std::string name;
-        Weapon &weapon;
-    
-    public :
-    HumanA(std::string name, Weapon &weapon);
-        ~HumanA(void);
-        void    setName(std::string name);
-		std::string getName(void);
-        void    attack(void);
-};
+#include "Replace.hpp"
 
 #endif
