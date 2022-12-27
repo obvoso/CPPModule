@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   replace.cpp                                        :+:      :+:    :+:   */
+/*   Replace.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: soo <soo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 19:42:14 by soo               #+#    #+#             */
-/*   Updated: 2022/12/26 21:53:48 by soo              ###   ########.fr       */
+/*   Updated: 2022/12/27 21:28:12 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,7 @@ void Replace::inFileOpen(std::string inFileName)
     if (inFile.fail())
     {
         std::cout << "inFile open Fail" << std::endl;
-        	while (1)
-        exit (0);
+        exit (1);
     }
 }
 
@@ -41,7 +40,7 @@ void Replace::outFileOpen()
     if (outFile.fail())
     {
         std::cout << "outFile open Fail" << std::endl;
-        exit (0);
+        exit (1);
     }
 }
 

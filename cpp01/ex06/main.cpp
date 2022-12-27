@@ -5,32 +5,22 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: soo <soo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/26 18:57:37 by soo               #+#    #+#             */
-/*   Updated: 2022/12/27 17:00:25 by soo              ###   ########.fr       */
+/*   Created: 2022/12/26 22:03:43 by soo               #+#    #+#             */
+/*   Updated: 2022/12/27 17:00:59 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Replace.hpp"
+#include "Harl.hpp"
 
 int main(int argc, char **argv)
 {
-	Replace replace;
+    Harl harl;
 
-	if (argc != 4)
-	{
-		std::cout << "Argument Error" << std::endl;
-		return (1);
-	}
-	if ((std::strlen(argv[1]) == 0) || (std::strlen(argv[1]) == 0) 
-		|| (std::strlen(argv[1]) == 0))
-	{
-		std::cout << "Argument Length Error" << std::endl;
-		return (1);
-	}
-	replace.inFileOpen((std::string)argv[1]);
-	replace.setS1((std::string)argv[2]);
-	replace.setS2((std::string)argv[3]);
-	replace.outFileOpen();
-	replace.replaceContents();
-	return (0);
+    if (argc != 2)
+    {
+        std::cout << "Argument Error" << std::endl;
+        return (1);
+    }
+    harl.complain((std::string)argv[1]);
+    return (0);
 }
