@@ -1,30 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: soo <soo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/26 18:57:37 by soo               #+#    #+#             */
-/*   Updated: 2022/12/28 19:48:27 by soo              ###   ########.fr       */
+/*   Created: 2022/12/28 20:14:41 by soo               #+#    #+#             */
+/*   Updated: 2022/12/28 21:16:58 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Replace.hpp"
+#ifndef FIXED_HPP
+# define FIXED_HPP
 
-int main(int argc, char **argv)
+#include <iostream>
+
+class Fixed
 {
-	Replace replace;
+private:
+    int                 _value;
+    const static int    _bits = 8;
 
-	if (argc != 4)
-	{
-		std::cout << "Argument Error" << std::endl;
-		return (1);
-	}
-	replace.inFileOpen((std::string)argv[1]);
-	replace.setS1((std::string)argv[2]);
-	replace.setS2((std::string)argv[3]);
-	replace.outFileOpen();
-	replace.replaceContents();
-	return (0);
-}
+public:
+    Fixed(void);
+    Fixed(const Fixed &obj);
+    Fixed &operator=(const Fixed &obj);
+    ~Fixed(void);
+    int getRawBits(void) const;
+    void    setRawBits(int const raw);
+};
+
+#endif

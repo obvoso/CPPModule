@@ -5,26 +5,23 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: soo <soo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/26 18:57:37 by soo               #+#    #+#             */
-/*   Updated: 2022/12/28 19:48:27 by soo              ###   ########.fr       */
+/*   Created: 2022/12/28 20:14:06 by soo               #+#    #+#             */
+/*   Updated: 2022/12/28 20:14:32 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Replace.hpp"
+#include "Fixed.hpp"
 
-int main(int argc, char **argv)
-{
-	Replace replace;
+int main( void ) {
+  Fixed a;
+  Fixed b( a );
+  Fixed c;
 
-	if (argc != 4)
-	{
-		std::cout << "Argument Error" << std::endl;
-		return (1);
-	}
-	replace.inFileOpen((std::string)argv[1]);
-	replace.setS1((std::string)argv[2]);
-	replace.setS2((std::string)argv[3]);
-	replace.outFileOpen();
-	replace.replaceContents();
-	return (0);
+  c = b;
+
+  std::cout << a.getRawBits() << std::endl;
+  std::cout << b.getRawBits() << std::endl;
+  std::cout << c.getRawBits() << std::endl;
+
+  return 0;
 }
