@@ -6,28 +6,24 @@
 /*   By: soo <soo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 20:14:06 by soo               #+#    #+#             */
-/*   Updated: 2023/01/02 18:03:30 by soo              ###   ########.fr       */
+/*   Updated: 2023/01/02 22:35:42 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 
-int main( void ) {
+int main( void ) { 
   Fixed a;
-  Fixed const b( 10 );
-  Fixed const c( 42.42f );
-  Fixed const d( b );
+  Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );
+  
+  std::cout << a << std::endl;
+  std::cout << ++a << std::endl;
+  std::cout << a << std::endl;
+  std::cout << a++ << std::endl;
+  std::cout << a << std::endl;
 
-  a = Fixed( 1234.4321f );
+  std::cout << b << std::endl;
 
-  std::cout << "a is " << a << std::endl;
-  std::cout << "b is " << b << std::endl;
-  std::cout << "c is " << c << std::endl;
-  std::cout << "d is " << d << std::endl;
-
-  std::cout << "a is " << a.toInt() << " as integer" << std::endl;
-  std::cout << "b is " << b.toInt() << " as integer" << std::endl;
-  std::cout << "c is " << c.toInt() << " as integer" << std::endl;
-  std::cout << "d is " << d.toInt() << " as integer" << std::endl;
-  return 0;
+  std::cout << Fixed::max( a, b ) << std::endl;
+  return 0; 
 }
