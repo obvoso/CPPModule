@@ -6,7 +6,7 @@
 /*   By: soo <soo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 20:46:58 by soo               #+#    #+#             */
-/*   Updated: 2023/01/03 15:03:12 by soo              ###   ########.fr       */
+/*   Updated: 2023/01/02 22:36:15 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,7 @@ Fixed::Fixed(const Fixed &obj)
 
 Fixed &Fixed::operator=(const Fixed &obj)
 {
-   if (this != &obj)
-        this->_value = obj.getRawBits();
+    this->_value = obj.getRawBits();
     return (*this);
 }
 
