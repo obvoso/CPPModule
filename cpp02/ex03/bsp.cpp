@@ -6,54 +6,44 @@
 /*   By: soo <soo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 15:40:24 by soo               #+#    #+#             */
-/*   Updated: 2023/01/03 15:47:43 by soo              ###   ########.fr       */
+/*   Updated: 2023/01/03 20:05:35 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Point.hpp"
 
-bool bsp(Point const a, Point const b, Point const c, Point const point)
+bool checkPoint(Point const a, Point const b)
 {
-    bool ret = false;
+    if ((a.getX() == b.getX()) && (a.getY() == b.getY()))
+        return (false);
+    return (true);
+}
 
+bool inPoint(Point const a, Point const point)
+{
     if (a.getX() == point.getX() && a.getY() == point.getY())
-        return (true);
-    if (b.getX() == point.getX() && b.getY() == point.getY())
-        return (true);
-    if (c.getX() == point.getX() && c.getY() == point.getY())
-        return (true);
+        return (false);
+    return (true);
+}
+
+bool checkLine(Point const a, Point const b, Point const point)
+{
     if (a.getY() > point.getY() != b.getY() > point.getY())
     {
         if (((b.getX() - a.getX()) * ((point.getY() - a.getY()) / (b.getY() - a.getY()))
-            + a.getX()) >= point.getX())
-            {
-                if (ret)
-                    ret = false;
-                else
-                    ret = true;
-            }
+            + a.getX()) > point.getX())
+                return (true);
     }
-    if (a.getY() > point.getY() != c.getY() > point.getY())
-    {
-        if (((c.getX() - a.getX()) * ((point.getY() - a.getY()) / (c.getY() - a.getY()))
-            + a.getX()) >= point.getX())
-            {
-                if (ret)
-                    ret = false;
-                else
-                    ret = true;
-            }
-    }
-     if (b.getY() > point.getY() != c.getY() > point.getY())
-    {
-        if (((c.getX() - b.getX()) * ((point.getY() - b.getY()) / (c.getY() - b.getY()))
-            + b.getX()) >= point.getX())
-            {
-                if (ret)
-                    ret = false;
-                else
-                    ret = true;
-            }
-    }
-    return (ret);
+    return (false);
+}
+
+bool bsp(Point const a, Point const b, Point const c, Point const point)
+{
+    if (!checkPoint(a, b) || !checkPoint(a, c) || !checkPoint(b, c))
+        return (false);
+    if (inPoint(a, point) || inPoint(b, point) || inPoint(c, point))
+        return (true);
+    if (checkLine(a, b, point) || checkLine(a, c, point) || checkLine(b, c, point))
+        return (true);
+    return (false);
 }
