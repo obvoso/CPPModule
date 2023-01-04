@@ -6,15 +6,15 @@
 #    By: soo <soo@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/18 13:14:40 by soo               #+#    #+#              #
-#    Updated: 2023/01/04 14:16:07 by soo              ###   ########.fr        #
+#    Updated: 2023/01/04 15:34:43 by soo              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
-NAME = ScavTrap
+NAME = FragTrap
 
-SRCS =	main.cpp ClapTrap.cpp ScavTrap.cpp
+SRCS =	main.cpp ClapTrap.cpp FragTrap.cpp
 
 OBJS = ${SRCS:.cpp=.o}
 

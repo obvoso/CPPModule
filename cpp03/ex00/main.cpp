@@ -6,7 +6,7 @@
 /*   By: soo <soo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 20:58:55 by soo               #+#    #+#             */
-/*   Updated: 2023/01/03 21:56:46 by soo              ###   ########.fr       */
+/*   Updated: 2023/01/04 21:44:25 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ int main(void)
 {
     ClapTrap soo("soo");
     ClapTrap bal("bal");
-
+    std::cout << std::endl;
+    
     soo.attack("bal");
     bal.takeDamage(soo.getAttackDamage());
     soo.attack("bal");
@@ -30,4 +31,7 @@ int main(void)
     bal.attack("soo");
     soo.takeDamage(12);
     soo.beRepaired(1);
+    
+    std::cout << std::endl;
+    return (0);
 }

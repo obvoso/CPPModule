@@ -6,16 +6,16 @@
 /*   By: soo <soo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 20:58:55 by soo               #+#    #+#             */
-/*   Updated: 2023/01/04 15:25:55 by soo              ###   ########.fr       */
+/*   Updated: 2023/01/04 15:34:54 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
 int main(void)
 {
-    ScavTrap soo("soo");
-    ScavTrap bal("bal");
+    FragTrap soo("soo");
+    FragTrap bal("bal");
     std::cout << std::endl;
 
     soo.attack("bal");
@@ -24,9 +24,10 @@ int main(void)
     bal.takeDamage(20);
     bal.attack("soo");
     soo.takeDamage(bal.getAttackDamage());
-    soo.guardGate();
+    soo.highFiveGuys();
     bal.beRepaired(10);
     soo.beRepaired(100);
+    bal.highFiveGuys();
     std::cout << std::endl;
     return (0);
 }

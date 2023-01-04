@@ -6,7 +6,7 @@
 /*   By: soo <soo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 20:13:12 by soo               #+#    #+#             */
-/*   Updated: 2023/01/03 21:53:53 by soo              ###   ########.fr       */
+/*   Updated: 2023/01/04 14:32:51 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void ClapTrap::beRepaired(unsigned int amount)
     else if (_energyPoint == 0)
         std::cout << "ClapTrap " << _name << " has no point." << std::endl;
     else if (_hitPoint == 10)
-            std::cout << "ClapTrap " << _name << " is already full." << std::endl;
+        std::cout << "ClapTrap " << _name << " is already full." << std::endl;
     else
     {
         if (_hitPoint + amount > 10)
