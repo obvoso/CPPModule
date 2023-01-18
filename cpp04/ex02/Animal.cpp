@@ -6,7 +6,7 @@
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 16:24:39 by soo               #+#    #+#             */
-/*   Updated: 2023/01/18 20:13:11 by soo              ###   ########.fr       */
+/*   Updated: 2023/01/18 21:13:02 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,4 @@ Animal& Animal::operator=(const Animal& obj)
     if (this != &obj)
         _type = obj._type;
     return (*this);
-}
-
-void Animal::makeSound(void) const
-{
-    std::cout << "Animal does not bark... This message is wrong..." << std::endl;
 }

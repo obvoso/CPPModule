@@ -6,13 +6,13 @@
 #    By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/18 13:14:40 by soo               #+#    #+#              #
-#    Updated: 2023/01/18 20:51:42 by soo              ###   ########.fr        #
+#    Updated: 2023/01/18 21:14:12 by soo              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
-NAME = Brain
+NAME = AbstractAnimal
 
 SRCS =	main.cpp Animal.cpp Dog.cpp Cat.cpp Brain.cpp WrongAnimal.cpp WrongCat.cpp
 
