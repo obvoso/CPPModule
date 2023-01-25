@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
+/*   By: soo <soo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 16:42:47 by soo               #+#    #+#             */
-/*   Updated: 2023/01/18 21:13:17 by soo              ###   ########.fr       */
+/*   Updated: 2023/01/19 14:12:43 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ int main(void)
 	std::cout << std::endl;
 
 	std::cout << std::endl;
-	i->makeSound();
 	j->makeSound();
+	i->makeSound();
 	meta->makeSound();
 	std::cout << std::endl;
 	
@@ -42,6 +42,6 @@ int main(void)
 	delete i;
 	delete wrong;
 	delete wrongCat;
-    
+
 	return (0);
 }

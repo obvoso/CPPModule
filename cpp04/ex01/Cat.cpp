@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Cat.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
+/*   By: soo <soo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 16:46:30 by soo               #+#    #+#             */
-/*   Updated: 2023/01/18 20:48:52 by soo              ###   ########.fr       */
+/*   Updated: 2023/01/19 14:08:21 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,13 @@ Cat::Cat()
 
 Cat::Cat(const Cat& obj) 
 {
+    _brain = new Brain();
     *this = obj;
 }
 
 Cat::Cat(const Brain& obj) 
 {
+    _brain = new Brain();
     *this = obj;
 }
 
@@ -39,6 +41,7 @@ Cat& Cat::operator=(const Cat& obj)
 {
     if (this != &obj)
     {
+        delete _brain;
         _type = obj._type;
 		_brain = new Brain(*(obj._brain));
     }
@@ -48,7 +51,10 @@ Cat& Cat::operator=(const Cat& obj)
 Cat& Cat::operator=(const Brain& obj) 
 {
     if (this->_brain != &obj)
-		_brain = new Brain(obj);
+    {
+         delete _brain;
+        _brain = new Brain(obj);
+    }
     return (*this);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
+/*   By: soo <soo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 16:42:47 by soo               #+#    #+#             */
-/*   Updated: 2023/01/18 21:04:31 by soo              ###   ########.fr       */
+/*   Updated: 2023/01/19 14:24:50 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,5 @@ int main(void)
 	std::cout << cat.getBrain(99) << std::endl;
 	std::cout << cat2.getBrain(99) << std::endl;
 	std::cout << dog.getBrain(99) << std::endl;
-
 	return (0);
 }
