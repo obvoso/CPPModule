@@ -6,7 +6,7 @@
 /*   By: soo <soo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 01:11:38 by soo               #+#    #+#             */
-/*   Updated: 2023/01/25 21:37:04 by soo              ###   ########.fr       */
+/*   Updated: 2023/01/25 22:03:20 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,19 @@ void Bureaucrat::signForm(Form &obj)
 	{
 		std::cout << _name << " couldn't sign " << obj.getName() << " because " <<
 		e.what() << "." << std::endl;
+	}
+}
+
+void Bureacrat::executeForm(Form const &form)
+{
+	try
+	{
+		form.execute(*this);
+		std::cout << _name << " executed " << form.getName() << std::endl;
+	}
+	catch (std::exception &e)
+	{
+		std::cout << _name " can not execute " << form.getName() << " because " << e.what() << std::endl;
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: soo <soo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 16:46:19 by soo               #+#    #+#             */
-/*   Updated: 2023/01/25 21:27:28 by soo              ###   ########.fr       */
+/*   Updated: 2023/01/25 22:18:24 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,19 @@ class Form
      Form(std::string name, int signGrade, int execGrade);
      Form(const Form& obj);
      Form& operator=(const Form& obj);
-     ~Form();
+     virtual ~Form();
 
      std::string getName(void) const;
      int getSignGrade(void) const;
      int getExecGrade(void) const;
      bool getIsSigned(void) const;
 
+     void setName(std::string name);
+     void setSignGrade(int n);
+     void setExecGrade(int n);
+     
      void beSigned(Bureaucrat &obj);
+     virtual void execute(Bureaucrat const &executer) const = 0;
 
      class GradeTooHighException : public std::exception
      {

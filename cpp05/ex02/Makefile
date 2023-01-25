@@ -6,13 +6,13 @@
 #    By: soo <soo@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/18 13:14:40 by soo               #+#    #+#              #
-#    Updated: 2023/01/25 21:35:38 by soo              ###   ########.fr        #
+#    Updated: 2023/01/25 21:55:07 by soo              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
-NAME = Form
+NAME = Execute
 
 SRCS =	main.cpp Bureaucrat.cpp Form.cpp
 

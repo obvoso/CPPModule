@@ -6,7 +6,7 @@
 /*   By: soo <soo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 01:08:00 by soo               #+#    #+#             */
-/*   Updated: 2023/01/25 21:29:24 by soo              ###   ########.fr       */
+/*   Updated: 2023/01/25 22:03:26 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ class Bureaucrat {
 	void	decreaseGrade(int n);
 
 	void signForm(Form &obj);
+	void executeForm(Form const &form);
 
 	class GradeTooHighException : public std::exception
 	{
