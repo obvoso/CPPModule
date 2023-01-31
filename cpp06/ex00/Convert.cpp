@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Convert.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: soo <soo@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 18:11:25 by soo               #+#    #+#             */
-/*   Updated: 2023/01/30 22:08:19 by soo              ###   ########.fr       */
+/*   Updated: 2023/01/31 16:40:53 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,15 @@ Convert::Convert(void)
 
 Convert::Convert(char *line)
 {
-    _origin = static_cast<std::string>(line);
-    _data = std::strtod(line, &_endptr);
-    _string = static_cast<std::string>(_endptr);
+	try {
+		_origin = static_cast<std::string>(line);
+		_data = std::strtod(line, &_endptr);
+		_string = static_cast<std::string>(_endptr);
+	}
+	catch(const std::bad_alloc& e)
+	{
+		return ;
+	}
 }
 
 Convert::Convert(const Convert& obj)
@@ -83,7 +89,8 @@ void Convert::printChar(void)
 void Convert::printInt(void)
 {
     toInt();
-    if ((_string.length() > 1 && *_endptr != 'f') || _data != _data)
+    if ((_string.length() > 1 && *_endptr != 'f') || 
+		_data != _data || _data * 2 == _data)
         std::cout << "int: impossible" << std::endl;
     else if(_int > INT_MAX || _int < INT_MIN)
         std::cout << "int: overflow or underflow" << std::endl;
@@ -94,8 +101,6 @@ void Convert::printInt(void)
 void Convert::printFloat(void)
 {
     toFloat();
-    // if (isinf(_float))
-    //     std::cout << "float: impossible" << std::endl;
     if (_string != "" && _string.length() != 1 && *_endptr != 'f')
         std::cout << "float: impossible" << std::endl;
     else if (static_cast<float>(_int) == _float)
