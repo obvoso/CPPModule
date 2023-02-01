@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
+/*   By: soo <soo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 02:24:54 by soo               #+#    #+#             */
-/*   Updated: 2023/01/26 23:39:33 by soo              ###   ########.fr       */
+/*   Updated: 2023/01/27 12:41:14 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Intern.hpp"
 
 int	main(void) {
+	try {
 	Intern i;
 	Bureaucrat b1("Boss", 1);
 	Bureaucrat b2("soo", 15);
@@ -54,5 +55,10 @@ int	main(void) {
 	delete f3;
 	delete f2;
 	delete f1;
+	}
+	catch(std::exception &e)
+	{
+		std::cerr << "Exception : " << e.what() << std::endl;
+	}
 	return 0;
 }
