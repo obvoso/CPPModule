@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Base.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
+/*   By: soo <soo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 18:16:02 by soo               #+#    #+#             */
-/*   Updated: 2023/01/31 18:36:24 by soo              ###   ########.fr       */
+/*   Updated: 2023/02/01 13:07:17 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ Base *generate(void)
 {
 	int num;
 
-	srand(time(nullptr));
+	srand(time(NULL));
 	num = rand() % 3;
 	
 	switch(num)
@@ -27,7 +27,7 @@ Base *generate(void)
 		case 1 : return (new B);
 		default : return (new C);
 	}
-	return (nullptr);
+	return (NULL);
 }
 
 void identify(Base *p)

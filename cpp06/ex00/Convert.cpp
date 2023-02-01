@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Convert.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
+/*   By: soo <soo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 18:11:25 by soo               #+#    #+#             */
-/*   Updated: 2023/01/31 16:40:53 by soo              ###   ########.fr       */
+/*   Updated: 2023/02/01 13:04:51 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,8 @@ void Convert::toDouble(void)
 void Convert::printChar(void)
 {
     toChar();
-    if (std::isprint(_char) && _string.length() != 1 && *_endptr != 'f')
+    if ((std::isprint(_char) && _string.length() != 1 && *_endptr != 'f') ||
+        _data != _data || _data * 2 == _data)
         std::cout << "char: impossible" << std::endl;
     else if (std::isprint(_char))
         std::cout << "char: '" << _char << "'" <<  std::endl;
@@ -90,7 +91,7 @@ void Convert::printInt(void)
 {
     toInt();
     if ((_string.length() > 1 && *_endptr != 'f') || 
-		_data != _data || _data * 2 == _data)
+		_data != _data || (_data != 0 && _data * 2 == _data))
         std::cout << "int: impossible" << std::endl;
     else if(_int > INT_MAX || _int < INT_MIN)
         std::cout << "int: overflow or underflow" << std::endl;
