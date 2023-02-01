@@ -6,7 +6,7 @@
 /*   By: soo <soo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 18:11:25 by soo               #+#    #+#             */
-/*   Updated: 2023/02/01 13:04:51 by soo              ###   ########.fr       */
+/*   Updated: 2023/02/01 13:17:07 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,8 @@ void Convert::toDouble(void)
 void Convert::printChar(void)
 {
     toChar();
-    if ((std::isprint(_char) && _string.length() != 1 && *_endptr != 'f') ||
-        _data != _data || _data * 2 == _data)
+    if ((std::isprint(_char) && _string.length() > 1 && *_endptr != 'f') ||
+        _data != _data || (_data != 0 && _data * 2 == _data))
         std::cout << "char: impossible" << std::endl;
     else if (std::isprint(_char))
         std::cout << "char: '" << _char << "'" <<  std::endl;
@@ -102,7 +102,7 @@ void Convert::printInt(void)
 void Convert::printFloat(void)
 {
     toFloat();
-    if (_string != "" && _string.length() != 1 && *_endptr != 'f')
+    if (_string.length() > 1 && *_endptr != 'f')
         std::cout << "float: impossible" << std::endl;
     else if (static_cast<float>(_int) == _float)
         std::cout << "float: " << _float << ".0f" << std::endl;
@@ -113,7 +113,7 @@ void Convert::printFloat(void)
 void Convert::printDouble(void)
 {
     toDouble();
-    if (_string != "" && _string.length() != 1 && *_endptr != 'f')
+    if (_string.length() > 1 && *_endptr != 'f')
         std::cout << "double: impossible" << std::endl;
     else if (static_cast<double>(_int) == _double)
         std::cout << "double: " << _double << ".0" << std::endl;
