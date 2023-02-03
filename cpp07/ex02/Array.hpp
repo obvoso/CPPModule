@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Array.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
+/*   By: soo <soo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 16:09:35 by soo               #+#    #+#             */
-/*   Updated: 2023/02/03 17:34:50 by soo              ###   ########.fr       */
+/*   Updated: 2023/02/03 20:41:33 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,6 @@ class Array {
 	T& operator [](size_t idx);
 	size_t	size(void) const;
 };
-
-#endif
 
 template<typename T>
 Array<T>::Array(void)
@@ -87,3 +85,5 @@ size_t	Array<T>::size(void) const
 {
 	return (_idx);
 }
+
+#endif
