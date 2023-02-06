@@ -6,7 +6,7 @@
 /*   By: soo <soo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 17:12:40 by soo               #+#    #+#             */
-/*   Updated: 2023/02/04 19:53:09 by soo              ###   ########.fr       */
+/*   Updated: 2023/02/06 15:19:04 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void test_addNumbers(){
 	for(int i = 0; i < 5; i++)
 		copyArr.push_back(i);
 
-	sp.addNumbers(copyArr.begin(), copyArr.end());
+	sp.addNumbers(copyArr);
     sp.print();
 	}
 	catch (std::exception &e)

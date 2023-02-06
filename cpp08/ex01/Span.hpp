@@ -6,7 +6,7 @@
 /*   By: soo <soo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 15:46:43 by soo               #+#    #+#             */
-/*   Updated: 2023/02/04 19:48:40 by soo              ###   ########.fr       */
+/*   Updated: 2023/02/06 15:18:53 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,11 @@ class Span
      void print(void);
 
      template<typename T>
-    //  void addNumbers(typename T::iterator begin, typename T::iterator end)
-     void addNumbers(T begin, T end)
+     void addNumbers(T &copy)
      {
-         if (std::distance(begin, end) > static_cast<long> (_size - _deque.size()))
+         if (_size < _deque.size() + copy.size())
             throw (std::runtime_error("no space in deque"));
-         while(begin != end)
-            addNumber(*begin++);
+         _deque.insert(_deque.end(), copy.begin(), copy.end());
      }
 };
 
