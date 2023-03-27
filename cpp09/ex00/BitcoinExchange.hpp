@@ -6,7 +6,7 @@
 /*   By: soo <soo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/26 17:52:15 by soo               #+#    #+#             */
-/*   Updated: 2023/03/26 21:38:05 by soo              ###   ########.fr       */
+/*   Updated: 2023/03/27 17:34:17 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,18 @@
 # include <map>
 # include <fstream>
 
-enum Error {
-    NEGATIVE,
-    BAD_INPUT,
-    LARGE_NUMBER
-};
+#define MAX 2147483647
 
-#define NEGATIVE "not a positive number"
+#define NEGATIVE "not a positive number."
 #define BAD_INPUT "bad input"
-#define LARGE_NUMBER "too large a number"
+#define LARGE_NUMBER "too large a number."
+
+enum Date {
+    SUCCESS,
+    ERR_NEGATIVE,
+    ERR_BAD_INPUT,
+    ERR_LARGE_NUMBER,
+};
 
 class BitcoinExchange
 {
@@ -44,7 +47,10 @@ class BitcoinExchange
      void initInput(char *infile);
      void printResult(void);
      int  checkDate(void);
+     int  checkValue(void);
+     void goBackPrevDate(void);
      void findValue(void);
+     bool checkLeapYear(int year);
 };
 
 #endif
