@@ -23,21 +23,28 @@ void BitcoinExchange::initMap(void)
 {
     std::ifstream dataFile;
     std::string line;
-    int delimiter;
+    size_t delimiter;
 
     dataFile.open("data.csv");
     if (dataFile.fail())
     {
-        std::cerr << "Error: file open error" << std::endl;
+        std::cerr << "Error: could not open file" << std::endl;
         exit(1);
     }
     std::getline(dataFile, line);
     while (!dataFile.eof())
     {
         std::getline(dataFile, line);
+        if (dataFile.eof())
+            return ;
         delimiter = line.find(',');
-        _map.insert({ line.substr(0, delimiter), 
-                    std::stod(line.substr(delimiter + 1)) });
+        if (delimiter == std::string::npos)
+        {
+            std::cerr << "Error: data format is invalid" << std::endl;
+            exit(1);
+        }
+        _map.insert(std::make_pair(line.substr(0, delimiter),
+                    std::stod(line.substr(delimiter + 1))));
     }
 }
 
@@ -45,12 +52,12 @@ void BitcoinExchange::initInput(char *infile)
 {
     std::ifstream inputFile;
     std::string line;
-    int delimiter = 0;
+    size_t delimiter;
 
     inputFile.open(infile);
     if (inputFile.fail())
     {
-        std::cerr << "Error: file open error" << std::endl;
+        std::cerr << "Error: could not open file" << std::endl;
         exit(1);
     }
     std::getline(inputFile, line);
@@ -62,14 +69,19 @@ void BitcoinExchange::initInput(char *infile)
     while(!inputFile.eof())
     {
         std::getline(inputFile, line);
+        if (inputFile.eof())
+            return ;
         delimiter = line.find('|');
         if (delimiter == std::string::npos)
         {
-            std::cerr << "Error: invalid input data format??ㅇㅓ캐처리" << std::endl;
-            exit(1);
+            _date = line;
+            _value = 0;
         }
-        _date = line.substr(0, delimiter - 1);
-        _value = std::stod(line.substr(delimiter + 2));
+        else
+        {
+            _date = line.substr(0, delimiter - 1);
+            _value = std::stod(line.substr(delimiter + 2));
+        }
         printResult();
     }
 }
@@ -88,10 +100,10 @@ void BitcoinExchange::printResult(void)
         std::cerr << "Error: " << LARGE_NUMBER << std::endl;
     else
     {
-        findValue();
-    }    
-    //값이 없을 때
+        double coin = findValue() * _value;
 
+        std::cout << _date << " => " << _value << " = " << coin << std::endl;
+    }
 }
 
 bool BitcoinExchange::checkLeapYear(int year)
@@ -149,14 +161,9 @@ int  BitcoinExchange::checkValue(void)
 {
     if (_value < 0)
         return (ERR_NEGATIVE);
-    if (_value > MAX)
+    if (_value > 1000)
         return (ERR_LARGE_NUMBER);
     return (SUCCESS);
-}
-
-void BitcoinExchange::goBackPrevDate(void)
-{
-    
 }
 
 double BitcoinExchange::findValue(void)
@@ -165,12 +172,12 @@ double BitcoinExchange::findValue(void)
     
     it = _map.find(_date);
     if (it != _map.end())
-    {
         return (it->second);
-    }
     else
     {
-       goBackPrevDate() 
+        it = _map.lower_bound(_date);
+        --it;
+        return (it->second);
     }
 }
 
