@@ -32,11 +32,8 @@ void BitcoinExchange::initMap(void)
         exit(1);
     }
     std::getline(dataFile, line);
-    while (!dataFile.eof())
+    while (std::getline(dataFile, line))
     {
-        std::getline(dataFile, line);
-        if (dataFile.eof())
-            return ;
         delimiter = line.find(',');
         if (delimiter == std::string::npos)
         {
@@ -66,11 +63,8 @@ void BitcoinExchange::initInput(char *infile)
         std::cerr << "Error: invalid input data format" << std::endl;
         exit(1);
     }
-    while(!inputFile.eof())
+    while(std::getline(inputFile, line))
     {
-        std::getline(inputFile, line);
-        if (inputFile.eof())
-            return ;
         delimiter = line.find('|');
         if (delimiter == std::string::npos)
         {
@@ -91,7 +85,6 @@ void BitcoinExchange::printResult(void)
     int checkValueRet;
 
     checkValueRet = checkValue();
-
     if (checkDate() == ERR_BAD_INPUT)
         std::cerr << "Error: " << BAD_INPUT << " => " << _date << std::endl;
     else if (checkValueRet == ERR_NEGATIVE)
@@ -101,7 +94,6 @@ void BitcoinExchange::printResult(void)
     else
     {
         double coin = findValue() * _value;
-
         std::cout << _date << " => " << _value << " = " << coin << std::endl;
     }
 }
@@ -119,14 +111,14 @@ int  BitcoinExchange::checkDate(void)
     int day = 0;
 
     int firstHyphen = _date.find('-');
-    year = std::stoi(_date.substr(0, firstHyphen - 1));
-    int secondHyphen = _date.find('-');
-    month = std::stoi(_date.substr(firstHyphen + 1, secondHyphen - 1));
+    year = std::stoi(_date.substr(0, firstHyphen));
+    int secondHyphen = _date.find('-', firstHyphen + 1);
+    month = std::stoi(_date.substr(firstHyphen + 1, secondHyphen));
     day = std::stoi(_date.substr(secondHyphen + 1));
 
-    if (year < 2009 && month < 1 && day < 2)
+    if (year < 2009 || (year < 2009 && month < 1 && day < 2))
         return (ERR_BAD_INPUT); //이걸 에러처리하는게 맞나
-    if (month == 1 || month == 3 || month == 5 || month == 7
+	if (month == 1 || month == 3 || month == 5 || month == 7
         || month == 8 || month == 10 || month == 12)
     {
         if (day <= 0 || 31 < day)
@@ -145,14 +137,13 @@ int  BitcoinExchange::checkDate(void)
         {
             if (day <= 0 || 29 < day)
                 return (ERR_BAD_INPUT);
-            return (SUCCESS);
         }
         else 
         {
-            if (day <= 0 | 28 < day)
+            if (day <= 0 || 28 < day)
                 return (ERR_BAD_INPUT);
-            return (SUCCESS);
         }
+		return (SUCCESS);
     }
     return (ERR_BAD_INPUT);
 }
