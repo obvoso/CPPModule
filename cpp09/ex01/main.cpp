@@ -5,22 +5,21 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/29 19:23:38 by soo               #+#    #+#             */
-/*   Updated: 2023/03/30 18:11:11 by soo              ###   ########.fr       */
+/*   Created: 2023/03/30 17:28:42 by soo               #+#    #+#             */
+/*   Updated: 2023/03/30 17:53:00 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "BitcoinExchange.hpp"
+#include "RPN.hpp"
 
 int main(int argc, char **argv)
 {
-    BitcoinExchange bit;
+	RPN rpn;
 
-    if (argc != 2)
-    {
-        std::cout << "Error: could not open file." << std::endl;
-        return (1);
-    }
-    bit.initMap();
-    bit.initInput(argv[1]);
+	if (argc == 1)
+	{
+		std::cerr << "Error" << std::endl;
+		return (1);
+	}
+	rpn.executeRpn(argv[1]);
 }

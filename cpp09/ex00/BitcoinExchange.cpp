@@ -28,7 +28,7 @@ void BitcoinExchange::initMap(void)
     dataFile.open("data.csv");
     if (dataFile.fail())
     {
-        std::cerr << "Error: could not open file" << std::endl;
+        std::cout << "Error: could not open file" << std::endl;
         exit(1);
     }
     std::getline(dataFile, line);
@@ -37,7 +37,7 @@ void BitcoinExchange::initMap(void)
         delimiter = line.find(',');
         if (delimiter == std::string::npos)
         {
-            std::cerr << "Error: data format is invalid" << std::endl;
+            std::cout << "Error: data format is invalid" << std::endl;
             exit(1);
         }
         _map.insert(std::make_pair(line.substr(0, delimiter),
@@ -54,13 +54,13 @@ void BitcoinExchange::initInput(char *infile)
     inputFile.open(infile);
     if (inputFile.fail())
     {
-        std::cerr << "Error: could not open file" << std::endl;
+        std::cout << "Error: could not open file" << std::endl;
         exit(1);
     }
     std::getline(inputFile, line);
     if (line.compare("date | value"))
     {
-        std::cerr << "Error: invalid input data format" << std::endl;
+        std::cout << "Error: invalid input data format" << std::endl;
         exit(1);
     }
     while(std::getline(inputFile, line))
@@ -86,11 +86,11 @@ void BitcoinExchange::printResult(void)
 
     checkValueRet = checkValue();
     if (checkDate() == ERR_BAD_INPUT)
-        std::cerr << "Error: " << BAD_INPUT << " => " << _date << std::endl;
+        std::cout << "Error: " << BAD_INPUT << " => " << _date << std::endl;
     else if (checkValueRet == ERR_NEGATIVE)
-        std::cerr << "Error: " << NEGATIVE << std::endl;
+        std::cout << "Error: " << NEGATIVE << std::endl;
     else if (checkValueRet == ERR_LARGE_NUMBER)
-        std::cerr << "Error: " << LARGE_NUMBER << std::endl;
+        std::cout << "Error: " << LARGE_NUMBER << std::endl;
     else
     {
         double coin = findValue() * _value;
@@ -116,8 +116,8 @@ int  BitcoinExchange::checkDate(void)
     month = std::stoi(_date.substr(firstHyphen + 1, secondHyphen));
     day = std::stoi(_date.substr(secondHyphen + 1));
 
-    if (year < 2009 || (year < 2009 && month < 1 && day < 2))
-        return (ERR_BAD_INPUT); //이걸 에러처리하는게 맞나
+    if (year < 2009 || (year == 2009 && month < 1 && day < 2))
+        return (ERR_BAD_INPUT);
 	if (month == 1 || month == 3 || month == 5 || month == 7
         || month == 8 || month == 10 || month == 12)
     {

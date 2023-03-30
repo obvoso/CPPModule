@@ -1,26 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   RPN.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/29 19:23:38 by soo               #+#    #+#             */
-/*   Updated: 2023/03/30 18:11:11 by soo              ###   ########.fr       */
+/*   Created: 2023/03/30 17:21:47 by soo               #+#    #+#             */
+/*   Updated: 2023/03/30 18:08:12 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "BitcoinExchange.hpp"
+#ifndef RPN_HPP
+# define RPN_HPP
 
-int main(int argc, char **argv)
-{
-    BitcoinExchange bit;
+# include <iostream>
+# include <stack>
 
-    if (argc != 2)
-    {
-        std::cout << "Error: could not open file." << std::endl;
-        return (1);
-    }
-    bit.initMap();
-    bit.initInput(argv[1]);
-}
+class RPN {
+ private:
+	std::stack<int> _stack;
+ public:
+	RPN(void);
+	RPN(const RPN& obj);
+	~RPN();
+	RPN& operator=(const RPN& obj);
+	
+	void executeRpn(char *argv);
+	void calculateRpn(char token);
+	void printError(void);
+};
+
+#endif
+
